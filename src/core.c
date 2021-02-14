@@ -5752,8 +5752,8 @@ static void *EventThread(void *arg)
                 // Basic movement
                 if (event.code == ABS_X)
                 {
-                    CORE.Input.Mouse.position.x    = (event.value - worker->absRange.x)*CORE.Window.screen.width/worker->absRange.width;   // Scale acording to absRange
-                    CORE.Input.Touch.position[0].x = (event.value - worker->absRange.x)*CORE.Window.screen.width/worker->absRange.width;   // Scale acording to absRange
+                    CORE.Input.Mouse.position.y    = (event.value - worker->absRange.x)*CORE.Window.screen.height/worker->absRange.height;   // Scale acording to absRange
+                    CORE.Input.Touch.position[0].y = (event.value - worker->absRange.x)*CORE.Window.screen.height/worker->absRange.height;   // Scale acording to absRange
                     
                     #if defined(SUPPORT_GESTURES_SYSTEM)
                         touchAction = TOUCH_MOVE;
@@ -5763,8 +5763,8 @@ static void *EventThread(void *arg)
 
                 if (event.code == ABS_Y)
                 {
-                    CORE.Input.Mouse.position.y    = (event.value - worker->absRange.y)*CORE.Window.screen.height/worker->absRange.height; // Scale acording to absRange
-                    CORE.Input.Touch.position[0].y = (event.value - worker->absRange.y)*CORE.Window.screen.height/worker->absRange.height; // Scale acording to absRange
+                    CORE.Input.Mouse.position.x    = CORE.Window.screen.width - ((event.value - worker->absRange.y)*CORE.Window.screen.width/worker->absRange.width); // Scale acording to absRange
+                    CORE.Input.Touch.position[0].x = CORE.Window.screen.width - ((event.value - worker->absRange.y)*CORE.Window.screen.width/worker->absRange.width); // Scale acording to absRange
 
                     #if defined(SUPPORT_GESTURES_SYSTEM)
                         touchAction = TOUCH_MOVE;
